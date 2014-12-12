@@ -13,6 +13,8 @@
 
 #logo{
 	position:absolute;
+        width:250px;
+        heigth:250px;
 	left:5%;
 	top: 10%;
 	z-index: 1;
@@ -33,3 +35,6 @@
 .formulaire .champ       {margin-left: 15px;width:200px; height:25px;}
 .formulaire .bouton       {background-image: url(./../img/search.png);background-repeat: no-repeat;width: 25px;height: 25px;padding: 0;}
 
+.row{
+    display:inline-block;
+}
