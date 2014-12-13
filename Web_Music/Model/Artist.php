@@ -10,17 +10,16 @@ require_once("base.php");
 class Artist{
 
 public static function findAllArtist(){
-$tab;
+
 $query="Select * from artists";
 $result=  mysql_query($query);
 echo $result;
 $i=0;
 while($row=  mysql_fetch_array($result)){
     $i=$i+1;
-    $tab[$i]=$row["image_url"];
+    $tab[i]=$row;
 }
-
-return $tab;
+echo $tab;
 
 }
 }
