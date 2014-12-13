@@ -11,9 +11,6 @@
  *
  * @author ersagun
  */
-
-//require_once ("../Controller/Controller.php");
-//View::show();
 $session_start = session_start();
 $file= file_get_contents("./view.html",  FILE_USE_INCLUDE_PATH);
 /* @var $file type */

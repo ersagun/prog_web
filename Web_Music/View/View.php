@@ -11,14 +11,15 @@
  * @author ersagun
  */
 
+/**
+ *  Attention !!! This page is dead.
+ */
+
+
+
+/**
+
 class View {
-
-/**var $p;**/
-
-/**public function __construct($param){
-$this->$p = $param;
-}**/
-
 
 public static function show(){
 session_start();
@@ -160,3 +161,6 @@ Your browser does not support the HTML5 audio element.
 </html>
  ';
  }}
+ *
+ * 
+ */
