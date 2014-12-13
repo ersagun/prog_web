@@ -1,11 +1,13 @@
 
-html{
+body{
     
-        font-family: "Trebuchet MS",Arial,Calibra, Helvetica, sans-serif;
+        font-family: "Ubuntu", Helvetica, Arial, sans-serif!important;
 }
 
 
-
+#txx{
+    font-family: "Ubuntu", Helvetica, Arial, sans-serif!important;
+}
 #all_content{
 	position:relative;
 	width:100%;

@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 
+
 $dbhost = 'localhost';
 $dbname = 'music';
 $dbuser = 'root';
