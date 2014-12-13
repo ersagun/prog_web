@@ -62,7 +62,8 @@ class Controller {
     }
     
     public function allArtist(){
-        echo "All";
+        $a=Artist::findAllArtist();
+        echo json_encode($a);
     }
     
     public function SignIn(){

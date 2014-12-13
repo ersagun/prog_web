@@ -229,16 +229,17 @@ strVar += "    ";
                     console.log("erreur !"); 
                 },
                 success: function(retour){
+                    var obj = JSON.parse(retour);
                     var ff=10;
                     $("#center").empty();
-                    for(i=0;i<=1;i++){
-                        $("#center").append('<div class="row"><div class="col-sm-6 col-md-4"><div class="thumbnail"><img data-src="holder.js/300x300" alt="..."><div class="caption">\
+                    for(i=0;i<retour.length;i++){
+                        $("#center").append('<div class="row"><div class="col-sm-6 col-md-4"><div class="thumbnail"><img data-src="'+retour+'" alt="..."><div class="caption">\
                         <h3>Thumbnail label</h3>\
                         <p>looooooooooooool</p>\
                         <p><a href="#aaa" class="btn btn-primary" role="button">Button1</a> <a href="#" class="btn btn-default" role="button">Button2</a></p>\
                         </div>\
                         </div>\
-                        </div><p>'+retour+'</p>');
+                        </div><p>'+obj.i+1+'</p>');
                     ff=ff*10;
                     } 
                 }
