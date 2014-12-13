@@ -66,21 +66,149 @@ $(document).ready(function(){
  
     function SignIn(){     
         console.log('ok');
-      $("#center").html('<div class="container">\
-      <form class="form-signin" role="form">\
-        <h2 class="form-signin-heading">Please sign in</h2>\
-        <label for="inputEmail" class="sr-only">Email address</label>\
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">\
-        <label for="inputPassword" class="sr-only">Password</label>\
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">\
-        <div class="checkbox">\
-          <label>\
-            <input type="checkbox" value="remember-me"> Remember me\
-          </label>\
-        </div>\
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>\
-      </form>\
-    </div> <!-- /container -->');
+        var strVar="";
+strVar += "    <div class=\"container\">    ";
+strVar += "        <div id=\"loginbox\" style=\"margin-top:50px;\" class=\"mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2\">                    ";
+strVar += "            <div class=\"panel panel-info\" >";
+strVar += "                    <div class=\"panel-heading\">";
+strVar += "                        <div class=\"panel-title\">Sign In<\/div>";
+strVar += "                        <div style=\"float:right; font-size: 80%; position: relative; top:-10px\"><a href=\"#\">Forgot password?<\/a><\/div>";
+strVar += "                    <\/div>     ";
+strVar += "";
+strVar += "                    <div style=\"padding-top:30px\" class=\"panel-body\" >";
+strVar += "";
+strVar += "                        <div style=\"display:none\" id=\"login-alert\" class=\"alert alert-danger col-sm-12\"><\/div>";
+strVar += "                            ";
+strVar += "                        <form id=\"loginform\" class=\"form-horizontal\" role=\"form\">";
+strVar += "                                    ";
+strVar += "                            <div style=\"margin-bottom: 25px\" class=\"input-group\">";
+strVar += "                                        <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"><\/i><\/span>";
+strVar += "                                        <input id=\"login-username\" type=\"text\" class=\"form-control\" name=\"username\" value=\"\" placeholder=\"username or email\">                                        ";
+strVar += "                                    <\/div>";
+strVar += "                                ";
+strVar += "                            <div style=\"margin-bottom: 25px\" class=\"input-group\">";
+strVar += "                                        <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-lock\"><\/i><\/span>";
+strVar += "                                        <input id=\"login-password\" type=\"password\" class=\"form-control\" name=\"password\" placeholder=\"password\">";
+strVar += "                                    <\/div>";
+strVar += "                                    ";
+strVar += "";
+strVar += "                                ";
+strVar += "                            <div class=\"input-group\">";
+strVar += "                                      <div class=\"checkbox\">";
+strVar += "                                        <label>";
+strVar += "                                          <input id=\"login-remember\" type=\"checkbox\" name=\"remember\" value=\"1\"> Remember me";
+strVar += "                                        <\/label>";
+strVar += "                                      <\/div>";
+strVar += "                                    <\/div>";
+strVar += "";
+strVar += "";
+strVar += "                                <div style=\"margin-top:10px\" class=\"form-group\">";
+strVar += "                                    <!-- Button -->";
+strVar += "";
+strVar += "                                    <div class=\"col-sm-12 controls\">";
+strVar += "                                      <a id=\"btn-login\" href=\"#\" class=\"btn btn-success\">Login  <\/a>";
+strVar += "                                      <a id=\"btn-fblogin\" href=\"#\" class=\"btn btn-primary\">Login with Facebook<\/a>";
+strVar += "";
+strVar += "                                    <\/div>";
+strVar += "                                <\/div>";
+strVar += "";
+strVar += "";
+strVar += "                                <div class=\"form-group\">";
+strVar += "                                    <div class=\"col-md-12 control\">";
+strVar += "                                        <div style=\"border-top: 1px solid#888; padding-top:15px; font-size:85%\" >";
+strVar += "                                            Don't have an account! ";
+strVar += "                                        <a href=\"#\" onClick=\"$('#loginbox').hide(); $('#signupbox').show()\">";
+strVar += "                                            Sign Up Here";
+strVar += "                                        <\/a>";
+strVar += "                                        <\/div>";
+strVar += "                                    <\/div>";
+strVar += "                                <\/div>    ";
+strVar += "                            <\/form>     ";
+strVar += "";
+strVar += "";
+strVar += "";
+strVar += "                        <\/div>                     ";
+strVar += "                    <\/div>  ";
+strVar += "        <\/div>";
+strVar += "        <div id=\"signupbox\" style=\"display:none; margin-top:50px\" class=\"mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2\">";
+strVar += "                    <div class=\"panel panel-info\">";
+strVar += "                        <div class=\"panel-heading\">";
+strVar += "                            <div class=\"panel-title\">Sign Up<\/div>";
+strVar += "                            <div style=\"float:right; font-size: 85%; position: relative; top:-10px\"><a id=\"signinlink\" href=\"#\" onclick=\"$('#signupbox').hide(); $('#loginbox').show()\">Sign In<\/a><\/div>";
+strVar += "                        <\/div>  ";
+strVar += "                        <div class=\"panel-body\" >";
+strVar += "                            <form id=\"signupform\" class=\"form-horizontal\" role=\"form\">";
+strVar += "                                ";
+strVar += "                                <div id=\"signupalert\" style=\"display:none\" class=\"alert alert-danger\">";
+strVar += "                                    <p>Error:<\/p>";
+strVar += "                                    <span><\/span>";
+strVar += "                                <\/div>";
+strVar += "                                    ";
+strVar += "                                ";
+strVar += "                                  ";
+strVar += "                                <div class=\"form-group\">";
+strVar += "                                    <label for=\"email\" class=\"col-md-3 control-label\">Email<\/label>";
+strVar += "                                    <div class=\"col-md-9\">";
+strVar += "                                        <input type=\"text\" class=\"form-control\" name=\"email\" placeholder=\"Email Address\">";
+strVar += "                                    <\/div>";
+strVar += "                                <\/div>";
+strVar += "                                    ";
+strVar += "                                <div class=\"form-group\">";
+strVar += "                                    <label for=\"firstname\" class=\"col-md-3 control-label\">First Name<\/label>";
+strVar += "                                    <div class=\"col-md-9\">";
+strVar += "                                        <input type=\"text\" class=\"form-control\" name=\"firstname\" placeholder=\"First Name\">";
+strVar += "                                    <\/div>";
+strVar += "                                <\/div>";
+strVar += "                                <div class=\"form-group\">";
+strVar += "                                    <label for=\"lastname\" class=\"col-md-3 control-label\">Last Name<\/label>";
+strVar += "                                    <div class=\"col-md-9\">";
+strVar += "                                        <input type=\"text\" class=\"form-control\" name=\"lastname\" placeholder=\"Last Name\">";
+strVar += "                                    <\/div>";
+strVar += "                                <\/div>";
+strVar += "                                <div class=\"form-group\">";
+strVar += "                                    <label for=\"password\" class=\"col-md-3 control-label\">Password<\/label>";
+strVar += "                                    <div class=\"col-md-9\">";
+strVar += "                                        <input type=\"password\" class=\"form-control\" name=\"passwd\" placeholder=\"Password\">";
+strVar += "                                    <\/div>";
+strVar += "                                <\/div>";
+strVar += "                                    ";
+strVar += "                                <div class=\"form-group\">";
+strVar += "                                    <label for=\"icode\" class=\"col-md-3 control-label\">Invitation Code<\/label>";
+strVar += "                                    <div class=\"col-md-9\">";
+strVar += "                                        <input type=\"text\" class=\"form-control\" name=\"icode\" placeholder=\"\">";
+strVar += "                                    <\/div>";
+strVar += "                                <\/div>";
+strVar += "";
+strVar += "                                <div class=\"form-group\">";
+strVar += "                                    <!-- Button -->                                        ";
+strVar += "                                    <div class=\"col-md-offset-3 col-md-9\">";
+strVar += "                                        <button id=\"btn-signup\" type=\"button\" class=\"btn btn-info\"><i class=\"icon-hand-right\"><\/i> &nbsp Sign Up<\/button>";
+strVar += "                                        <span style=\"margin-left:8px;\">or<\/span>  ";
+strVar += "                                    <\/div>";
+strVar += "                                <\/div>";
+strVar += "                                ";
+strVar += "                                <div style=\"border-top: 1px solid #999; padding-top:20px\"  class=\"form-group\">";
+strVar += "                                    ";
+strVar += "                                    <div class=\"col-md-offset-3 col-md-9\">";
+strVar += "                                        <button id=\"btn-fbsignup\" type=\"button\" class=\"btn btn-primary\"><i class=\"icon-facebook\"><\/i>   Sign Up with Facebook<\/button>";
+strVar += "                                    <\/div>                                           ";
+strVar += "                                        ";
+strVar += "                                <\/div>";
+strVar += "                                ";
+strVar += "                                ";
+strVar += "                                ";
+strVar += "                            <\/form>";
+strVar += "                         <\/div>";
+strVar += "                    <\/div>";
+strVar += "";
+strVar += "               ";
+strVar += "               ";
+strVar += "                ";
+strVar += "         <\/div> ";
+strVar += "    <\/div>";
+strVar += "    ";
+
+      $("#center").html(strVar);
         }
     
     
@@ -119,7 +247,7 @@ $(document).ready(function(){
             
             
 function signup(){
-('#center').html('<div class="container">\
+$('#center').html('<div class="container">\
 <div class="row">\
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">\
 		<form role="form">\
@@ -197,21 +325,5 @@ function signup(){
 		</div><!-- /.modal-content -->\
 	</div><!-- /.modal-dialog -->\
 </div><!-- /.modal -->\
-</div>');
-    
-    
- 
-/**
-    setInterval(manageHash,500);
-
-    function manageHash(){
-    if(window.location.hash) {
-      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
-      alert ("hahahaah : "+hash);
-      // hash found
-  } else {
-      // No hash found
-
-        }
-    }}];
- **/
+</div>');    
+    }
