@@ -63,7 +63,7 @@ class Controller {
     
     public function allArtist(){
         $tab=Artist::findAllArtist();
-        echo json_encode($tab[0]).json_encode($tab[1]);
+        echo json_encode($tab, JSON_FORCE_OBJECT);
 
     }
     public function SignIn(){
