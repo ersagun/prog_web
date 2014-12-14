@@ -39,12 +39,15 @@ body{
 	height:450px;
 
 }
+#center{
+    text-align:center;
+}
 
 #searchbar{position:relative; width:auto; height:auto; margin-top: 10px;}
 .formulaire               {display:inline-block;}
 .formulaire .champ       {margin-left: 15px;width:200px; height:25px;}
 .formulaire .bouton       {background-image: url(./../img/search.png);background-repeat: no-repeat;width: 25px;height: 25px;padding: 0;}
 
-.row{
+.thumbnail{
     display:inline-block;
 }

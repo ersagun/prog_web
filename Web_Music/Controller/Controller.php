@@ -63,14 +63,9 @@ class Controller {
     
     public function allArtist(){
         $tab=Artist::findAllArtist();
-        for($i=0;$i<=$tab[i].le;$i++){
-            echo($tab[$i][$i]);
-        }
-        $return["json"]=  json_encode($tab);
-        $t=json_encode($return);
-        echo $t;
+        echo json_encode($tab[0]).json_encode($tab[1]);
+
     }
-    
     public function SignIn(){
         
         echo "connecté";

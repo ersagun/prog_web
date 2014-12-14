@@ -212,21 +212,21 @@ strVar += "    ";
                     console.log("erreur !"); 
                 },
                 success: function(retour){
-                    console.log(retour);
-                    var obj = $.parseJSON(retour);
+                    console.log(retour[0]);
+                    //var obj = $.parseJSON(retour);
                     var ff=10;
-                    console.log(o);
+                  
                     $("#center").empty();
+                    $("#center").append('<div class="row" style="margin-left:auto;margin-right:auto;width:80%;"><div class="col-sm-6 col-md-4">');
                     for(i=0;i<retour.length;i++){
-                        $("#center").append('<div class="row"><div class="col-sm-6 col-md-4"><div class="thumbnail"><img data-src="'+retour+'" alt="..."><div class="caption">\
+                        $("#center").append('<div class="thumbnail"><img data-src="holder.js/300x300" src="'+retour[i]+'" alt="artist" style="height:300px;widht:300px;"><div class="caption">\
                         <h3>Thumbnail label</h3>\
-                        <p>looooooooooooool</p>\
+                        <p>Lorem ipsumm balbalbalba</p>\
                         <p><a href="#aaa" class="btn btn-primary" role="button">Button1</a> <a href="#" class="btn btn-default" role="button">Button2</a></p>\
                         </div>\
-                        </div>\
-                        </div><p>'+obj.i+1+'</p>');
-                    ff=ff*10;
+                        </div>');
                     } 
+                     $("#center").append('</div>');
                 }
             }); 
         }
