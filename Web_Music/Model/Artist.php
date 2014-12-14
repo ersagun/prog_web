@@ -17,18 +17,21 @@ $dbuser = 'root';
 $dbpass = '';
 
 
-$tab;
+$t;
 $query="Select * from artists";
 //$result=  mysql_query($query);
 $dbh = new PDO('mysql:host=localhost;dbname=music', $dbuser, $dbpass);
 $i=0;
+$tabPrincipale;
 foreach($dbh->query($query) as $row){
-    $t[$i]=$row;
+    $url[$i]=$row["image_url"];
+    $name[$i]=$row["name"];
     //echo($t[$i]);
     $i++;
 }
-
-return $t;
+$tabP[0]=$url;
+$tabP[1]=$name;
+return $tabP;
 
 }
 }
