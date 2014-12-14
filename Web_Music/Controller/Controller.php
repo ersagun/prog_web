@@ -1,6 +1,4 @@
 <?php
-
-
 //require_once("../View/View.php");
 //echo file_get_contents("../View/View.html");
 
@@ -19,6 +17,8 @@
  */
 
 require_once("../View/View.php");
+require_once("../Model/Artist.php");
+
 class Controller {
     
     public function __construct(){
@@ -62,8 +62,13 @@ class Controller {
     }
     
     public function allArtist(){
-        $a=Artist::findAllArtist();
-        echo json_encode($a);
+        $tab=Artist::findAllArtist();
+        for($i=0;$i<=$tab[i].le;$i++){
+            echo($tab[$i][$i]);
+        }
+        $return["json"]=  json_encode($tab);
+        $t=json_encode($return);
+        echo $t;
     }
     
     public function SignIn(){
@@ -72,11 +77,11 @@ class Controller {
     }
     
 
-    public static function main(){
+    public static function main($req){
         $control=new Controller();
-        $control->callAction($_REQUEST);
+        $control->callAction($req);
     }
     
         }
 
-Controller::main();
+Controller::main($_REQUEST);
