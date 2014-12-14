@@ -12,5 +12,6 @@ $dbname = 'music';
 $dbuser = 'root';
 $dbpass = '';
 
-mysql_connect($dbhost,$dbuser) or die ("Erreur MySQL : ".  mysql_error());
-mysql_select_db($dbname) or die ("Erreur MySQL : ".  mysql_error());
+//mysql_connect($dbhost,$dbuser) or die ("Erreur MySQL : ".  mysql_error());
+$dbh = new PDO('mysql:host=localhost;dbname=music', $dbuser, $dbpass);
+//mysql_select_db($dbname) or die ("Erreur MySQL : ".  mysql_error());

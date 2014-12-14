@@ -7,24 +7,7 @@
 var hash={'#SignIn':'SignIn','#!':'firstPage','#aaa':'aaa','#SignUp':'signup'};
 
 $(document).ready(function(){    
-    
-    console.log("cococcocuciocu");
-   
-    /**
-     * Listen for hash changes.
-     */   
-    /** if(location.hash && hash[location.hash]!== -1){
-         console.log("ok"+location.hash);
-      
-        updateMyApp(window.location.hash.substring(1));
-        setLocationHash(window.location.hash.substring(1)); 
-        console.log(location.hash);
-     }else{
-        console.log("nn"+location.hash);
-        $('#center').html('<p>404 not found</p>');
-        }
-    **/
-    
+    console.log("in hash.js :");
     window.onhashchange = function() {updateMyApp(getLocationHash());}
      //setInterval(updateMyApp(getLocationHash(),500));
      
@@ -219,18 +202,20 @@ strVar += "    ";
     
     
     function firstPage(){
-        console.log
+        console.log('firstpage');
             $.ajax({ 
-                type: "GET", 
+                type: "POST", 
                 url: "../Controller/Controller.php", 
                 data: "a=allArtist",
-                dataType:"text",
+                dataType:"json",
                 error: function() { 
                     console.log("erreur !"); 
                 },
                 success: function(retour){
-                    var obj = JSON.parse(retour);
+                    console.log(retour);
+                    var obj = $.parseJSON(retour);
                     var ff=10;
+                    console.log(o);
                     $("#center").empty();
                     for(i=0;i<retour.length;i++){
                         $("#center").append('<div class="row"><div class="col-sm-6 col-md-4"><div class="thumbnail"><img data-src="'+retour+'" alt="..."><div class="caption">\

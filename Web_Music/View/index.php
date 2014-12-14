@@ -12,6 +12,7 @@
  * @author ersagun
  */
 $session_start = session_start();
+//include 'lunch_autoload.php' ;
 $file= file_get_contents("./view.html",  FILE_USE_INCLUDE_PATH);
 /* @var $file type */
 echo $file;

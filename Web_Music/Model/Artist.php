@@ -10,16 +10,25 @@ require_once("base.php");
 class Artist{
 
 public static function findAllArtist(){
+    
+    $dbhost = 'localhost';
+$dbname = 'music';
+$dbuser = 'root';
+$dbpass = '';
 
+
+$tab;
 $query="Select * from artists";
-$result=  mysql_query($query);
-echo $result;
+//$result=  mysql_query($query);
+$dbh = new PDO('mysql:host=localhost;dbname=music', $dbuser, $dbpass);
 $i=0;
-while($row=  mysql_fetch_array($result)){
-    $i=$i+1;
-    $tab[i]=$row;
+foreach($dbh->query($query) as $row){
+    $t[$i]=$row;
+    //echo($t[$i]);
+    $i++;
 }
-echo $tab;
+
+return $t;
 
 }
 }
