@@ -1,4 +1,9 @@
 
+html{
+    
+}
+
+
 body{
     
         font-family: "Ubuntu", Helvetica, Arial, sans-serif!important;
@@ -41,6 +46,19 @@ body{
 }
 #center{
     text-align:center;
+    width: 75%;
+}
+#playlist{
+    width:430px;
+    height:100%;
+position:fixed;
+    top:50px;
+    right:0;
+    border-style: solid;
+    border-width: 0,5;
+    border-color: black;
+    background-color: white;
+z-index: 1;
 }
 
 #searchbar{position:relative; width:auto; height:auto; margin-top: 10px;}
