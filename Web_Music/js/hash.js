@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-var hash={'#SignIn':'SignIn','#!':'firstPage','#aaa':'aaa','#SignUp':'signup'};
+var hash={'#SignIn':'signIn','#!':'firstPage','#aaa':'aaa','#SignUp':'signup','#AllMusic':'allMusic','#listen':'listen'};
 
 $(document).ready(function(){    
     console.log("in hash.js :");
@@ -47,7 +47,7 @@ $(document).ready(function(){
         window.location.hash = str;
     }
  
-    function SignIn(){     
+    function signIn(){     
         console.log('ok');
         var strVar="";
 strVar += "    <div class=\"container\">    ";
@@ -232,6 +232,38 @@ strVar += "    ";
                 }
             }); 
         }
+        
+        
+        function allMusic(){
+            $.ajax({ 
+                type: "POST", 
+                url: "../Controller/Controller.php", 
+                data: "a=allMusic",
+                dataType:"json",
+                error: function() { 
+                    console.log("erreur !"); 
+                },
+                success: function(retour){
+                    console.log("haha");
+                    
+                    $("#center").empty();
+
+                    $("#center").append('<div class="row" style="text-align:justify;"><div class="col-sm-6 col-md-4">');
+                
+                    for(i=0;i<retour.length;i++){
+                        
+                        $("#center").append('<div class="thumbnail" style="vertical-align:top; *display: inline;zoom: 1"><img data-src="holder.js/300x300" src="'+retour[i].image_url+'" alt="artist" style="height:300px;widht:300px;"><div class="caption">\
+                        <h3>'+retour[i].title+'</h3>\
+                        <p style="width:300px;text-align:justify"></p>\
+                        <p><button onclick="listenMusic('+retour[i].mp3_url+')" class="btn btn-primary">listen</button></p>\
+                        </div>\
+                        </div>');
+                         $(".btn btn-primary").attr("onclick","listenMusic("+retour[i].mp3_url+")");
+                    } 
+                    $("#center").append('</div>');
+                }
+            }); 
+        }
             
             
 function signup(){
@@ -314,4 +346,8 @@ $('#center').html('<div class="container">\
 	</div><!-- /.modal-dialog -->\
 </div><!-- /.modal -->\
 </div>');    
+    }
+    
+    function listen(){
+        
     }

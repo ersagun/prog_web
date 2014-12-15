@@ -148,5 +148,10 @@ private $playlist_name;
       }
       return $res;
     }
+
+    public function jsonSerialize() {
+        
+    }
+
 }
   

@@ -44,8 +44,12 @@ function searchBar(val){
                     $("#center").append('</div>');
                 }
             }); 
-}
-
+        }
+            function listenMusic(val){ 
+    console.log(val);    
+    $('#player').html('<source src = "'+val+'" type = "audio/mpeg">\
+    <source src = "'+val+'" type = "audio/ogg">');
+    }
 /*
 var jumboHeight = $('.jumbotron').outerHeight();
 function parallax(){

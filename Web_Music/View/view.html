@@ -11,6 +11,9 @@ and open the template in the editor.
 		<link rel="stylesheet" href="../css/bootstrap.css" type="text/css"/>
 		<link rel="stylesheet" href="../css/music.css" type="text/css"/>
 		<script src="../js/jquery.js"></script> 
+                <script src = "../js/bootstrap.js"></script>
+                <script src="../js/jsPrincipal.js"></script>
+                <script src="../js/hash.js"></script>
 	</head>
 
 	<body>
@@ -80,15 +83,14 @@ and open the template in the editor.
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#allMusique">Tous les musiques</a></li>
-            <li><a href="#!">Tous les artistes</a></li>
+            <li><a href="#AllMusic">Songs</a></li>
+            <li><a href="#!">Artists</a></li>
             <li><a href="#SignUp">Sign Up</a></li>
             <li><a href="#SignIn">Sign in</a></li>
 <li>
-<audio controls = "controls" id = "player">
-<source src = "../audio/birds.mp3" type = "audio/mpeg">
-<source src = "../audio/birds.ogg" type = "audio/ogg">
-Your browser does not support the HTML5 audio element.
+<audio autoplay controls = "controls" id = "player">
+<source class="sound_url" src = "../audio/birds.mp3" type = "audio/mpeg">
+<source class="sound_url" src = "../audio/birds.mp3" type = "audio/ogg">
 </audio>
 </li>
 <li>
@@ -123,7 +125,7 @@ Your browser does not support the HTML5 audio element.
 </div>
    <div id = "playlist">
 <div class="list-group">
-    <H1 id=""title_pl">Playlist</H1>
+    <H1>Playlist</H1>
   <a href="#" class="list-group-item active">
     Cras justo odio
   </a>
@@ -135,12 +137,4 @@ Your browser does not support the HTML5 audio element.
 </div>                
 </div>
 </body>
-
-
-<footer>
-</footer>
-
-<script src = "../js/bootstrap.js"></script>
-<script src="../js/jsPrincipal.js"></script>
-<script src="../js/hash.js"></script>
 </html>

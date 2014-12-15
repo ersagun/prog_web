@@ -1,0 +1,11 @@
+{
+    "elements": {
+        "div": {},
+        "img": {}
+    },
+    "attributes": {
+        "title_pl\"": {
+            "context": "h1"
+        }
+    }
+}

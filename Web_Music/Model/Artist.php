@@ -120,7 +120,7 @@ private $info;
  
           $d = $query->fetch(PDO::FETCH_BOTH);
            
-          $nb = new artists();
+          $nb = new Artist();
           $nb->artist_id = $d['artist_id'];
           $nb->name = $d['name'];
           $nb->image_url = $d['image_url'];

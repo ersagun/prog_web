@@ -16,7 +16,8 @@ class Track implements JsonSerializable {
 private $track_id;
 private $title;
 private $mp3_url;
-
+private $image_url;
+private $name;
    
   public function __construct() {
     // rien à faire
@@ -128,7 +129,7 @@ private $mp3_url;
  
           $d = $query->fetch(PDO::FETCH_BOTH);
            
-          $nb = new tracks();
+          $nb = new Track();
           $nb->track_id = $d['track_id'];
           $nb->artist_id = $d['artist_id'];
           $nb->title = $d['title'];
@@ -141,7 +142,7 @@ private $mp3_url;
     public static function findAll() {
    
       $c = Base::getConnection();
-      $query = "select * from tracks";
+      $query = "select * from tracks as t left join artists as a on t.artist_id=a.artist_id";
       $stmt = $c->prepare($query) ;
       $stmt->execute();
       $res = array();
@@ -151,14 +152,22 @@ private $mp3_url;
         $artist_id = $ligne['artist_id'];
         $title = $ligne['title'];
         $mp3_url = $ligne['mp3_url'];
-        $obj = new tracks();
+        $image_url=$ligne['image_url'];
+        $name=$ligne['name'];
+        $obj = new Track();
         $obj->track_id=$track_id;
         $obj->artist_id=$artist_id;
         $obj->title=$title;
         $obj->mp3_url=$mp3_url;
+        $obj->image_url=$image_url;
+        $obj->name=$name;
         array_push($res,$obj);
       }
       return $res;
     }
-       
+
+    public function jsonSerialize() {
+        return get_object_vars($this);
+    }
+
 }

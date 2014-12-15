@@ -18,6 +18,7 @@
 
 require_once("../View/View.php");
 require_once("../Model/Artist.php");
+require_once("../Model/Track.php");
 header('content-type: text/html; charset=utf-8');
 class Controller {
     
@@ -26,7 +27,8 @@ class Controller {
             'allArtist' => 'allArtist',
             'showArtist' => 'showArtist',
             'signIn' => 'signIn',
-                'search'=>'search'
+                'search'=>'search',
+                'allMusic'=>'allMusic'
     
         );
     }
@@ -66,6 +68,11 @@ class Controller {
         $tab=Artist::findAll(); 
         echo json_encode($tab);
 
+    }
+    
+    public function allMusic(){
+        $tab=Track::findAll(); 
+        echo json_encode($tab);
     }
     public function SignIn(){
         
