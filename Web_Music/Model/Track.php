@@ -11,7 +11,7 @@
  *
  * @author ersagun
  */
-class Track {
+class Track implements JsonSerializable {
   private $artist_id;
 private $track_id;
 private $title;

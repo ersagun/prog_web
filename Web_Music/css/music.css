@@ -1,12 +1,15 @@
 
 html{
-    
+    	background: #2f3238;
+	color: #fff;
 }
 
 
 body{
     
         font-family: "Ubuntu", Helvetica, Arial, sans-serif!important;
+        	background: #2f3238;
+	color: black;
 }
 
 
@@ -45,8 +48,9 @@ body{
 
 }
 #center{
-    text-align:center;
+    text-align:justify;
     width: 75%;
+    height:100%;
 }
 #playlist{
     width:430px;
@@ -60,6 +64,9 @@ position:fixed;
     background-color: white;
 z-index: 1;
 }
+#title_pl{
+    color:black;
+}
 
 #searchbar{position:relative; width:auto; height:auto; margin-top: 10px;}
 .formulaire               {display:inline-block;}
@@ -68,4 +75,5 @@ z-index: 1;
 
 .thumbnail{
     display:inline-block;
+    
 }

@@ -11,7 +11,7 @@
  *
  * @author ersagun
  */
-class PlaylistTrack {
+class PlaylistTrack implements JsonSerializable {
     private $playlist_id;
 private $position;
 private $track_id;

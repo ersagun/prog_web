@@ -152,6 +152,29 @@ private $info;
       return $res;
     }
     
+        public static function findArtistLike($val) {
+   
+      $c = Base::getConnection();
+      $query = "select * from artists where name LIKE '".$val."%'";
+      $stmt = $c->prepare($query) ;
+      $stmt->execute();
+      $res = array();
+      while ($ligne = $stmt->fetch(PDO::FETCH_BOTH)) 
+      {
+        $name = $ligne['name'];
+        $image = $ligne['image_url'];
+        $artist_idd = $ligne['artist_id'];
+        $inf = $ligne['info'];
+        $obj = new Artist();
+        $obj->name =$name;
+        $obj->image_url=$image;
+        $obj->artist_id=$artist_idd;
+        $obj->info=$inf;
+        array_push($res,$obj);
+      }
+      $res;
+    }
+    
         // properties
 
     // function called when encoded with json_encode

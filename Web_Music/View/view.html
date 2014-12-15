@@ -81,7 +81,7 @@ and open the template in the editor.
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#allMusique">Tous les musiques</a></li>
-            <li><a href="#allArtist">Tous les artistes</a></li>
+            <li><a href="#!">Tous les artistes</a></li>
             <li><a href="#SignUp">Sign Up</a></li>
             <li><a href="#SignIn">Sign in</a></li>
 <li>
@@ -95,7 +95,7 @@ Your browser does not support the HTML5 audio element.
 <div id = "searchbar" style="margin-top:2px;">
 <form class="navbar-form navbar-right inline-form">
             <div class="form-group">
-              <input type="search" class="input-sm form-control" placeholder="Recherche">
+              <input type="search" class="input-sm form-control" placeholder="Recherche" onkeyup="searchBar(this.value)">
               <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Chercher</button>
             </div>
           </form>
@@ -123,7 +123,7 @@ Your browser does not support the HTML5 audio element.
 </div>
    <div id = "playlist">
 <div class="list-group">
-    <H1>Playlist</H1>
+    <H1 id=""title_pl">Playlist</H1>
   <a href="#" class="list-group-item active">
     Cras justo odio
   </a>

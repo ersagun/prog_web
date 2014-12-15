@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class Playlist{
+class Playlist implements JsonSerializable{
 
 private $user_id;
 private $playlist_id;

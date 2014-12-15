@@ -25,7 +25,8 @@ class Controller {
             $this->action=  array (
             'allArtist' => 'allArtist',
             'showArtist' => 'showArtist',
-            'signIn' => 'signIn'
+            'signIn' => 'signIn',
+                'search'=>'search'
     
         );
     }
@@ -69,6 +70,11 @@ class Controller {
     public function SignIn(){
         
         echo "connecté";
+    }
+    
+    public function search(){
+        $tab=Artist::findArtistLike($_GET['like']); 
+        echo json_encode($tab);
     }
     
 
