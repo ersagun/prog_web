@@ -18,7 +18,7 @@
 
 require_once("../View/View.php");
 require_once("../Model/Artist.php");
-
+header('content-type: text/html; charset=utf-8');
 class Controller {
     
     public function __construct(){
@@ -62,8 +62,8 @@ class Controller {
     }
     
     public function allArtist(){
-        $tab=Artist::findAllArtist();
-        echo json_encode($tab, JSON_FORCE_OBJECT);
+        $tab=Artist::findAll(); 
+        echo json_encode($tab);
 
     }
     public function SignIn(){

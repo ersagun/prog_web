@@ -11,6 +11,9 @@
  *
  * @author ersagun
  */
+
+header('Content-Type: charset=utf-8'); 
+
 $session_start = session_start();
 //include 'lunch_autoload.php' ;
 $file= file_get_contents("./view.html",  FILE_USE_INCLUDE_PATH);

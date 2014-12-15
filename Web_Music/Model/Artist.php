@@ -1,5 +1,5 @@
 <?php
-require_once("base.php");
+require_once("Base.php");
 
         
 /* 
@@ -7,7 +7,10 @@ require_once("base.php");
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class Artist{
+
+//setup php for working with Unicode data
+
+class Artist implements JsonSerializable{
  
 private $artist_id;
 private $name;
@@ -139,7 +142,7 @@ private $info;
         $image = $ligne['image_url'];
         $artist_idd = $ligne['artist_id'];
         $inf = $ligne['info'];
-        $obj = new artists();
+        $obj = new Artist();
         $obj->name =$name;
         $obj->image_url=$image;
         $obj->artist_id=$artist_idd;
@@ -148,82 +151,12 @@ private $info;
       }
       return $res;
     }
-     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   
-/**    
-    
-public static function findAllArtist(){
-    
-    $dbhost = 'localhost';
-$dbname = 'music';
-$dbuser = 'root';
-$dbpass = '';
+        // properties
 
-
-$t;
-$query="Select * from artists";
-//$result=  mysql_query($query);
-$dbh = new PDO('mysql:host=localhost;dbname=music', $dbuser, $dbpass);
-$i=0;
-$tabPrincipale;
-foreach($dbh->query($query) as $row){
-    $url[$i]=$row["image_url"];
-    $name[$i]=$row["name"];
-    //echo($t[$i]);
-    $i++;
-}
-$tabP[0]=$url;
-$tabP[1]=$name;
-return $tabP;
-
-}
-
- */
+    // function called when encoded with json_encode
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
+    }
 }

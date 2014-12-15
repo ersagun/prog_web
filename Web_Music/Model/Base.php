@@ -10,12 +10,13 @@ class Base {
       
     private static function connect(){ 
         try{ 
-          
-            $dsn="mysql:host=localhost;dbname=music" ; 
-            $db = new PDO($dsn, 'root', '',array( 
+            require_once ("config.php");
+            $dsn="mysql:host=".$host.";"."dbname=".$dbname.";charset=utf8"; 
+            $db = new PDO($dsn, 'root','',array( 
             PDO::ERRMODE_EXCEPTION=>true, 
             PDO::ATTR_PERSISTENT=>true 
             )); 
+            $db->exec("set names utf8");
               
         } catch(PDOException $e) { 
           
@@ -33,7 +34,7 @@ class Base {
               
         } else { 
           
-            self::$dblink = self::connect() ; 
+            self::$dblink = self::connect(); 
             return self::$dblink ; 
               
         } 
