@@ -45,18 +45,22 @@ function searchBar(val){
                 }
             }); 
         }
-            function listenMusic(val){ 
-    console.log(val);    
-    $('#player').html('<source src = "'+val+'" type = "audio/mpeg">\
-    <source src = "'+val+'" type = "audio/ogg">');
-    }
-/*
-var jumboHeight = $('.jumbotron').outerHeight();
-function parallax(){
-    var scrolled = $(window).scrollTop();
-    $('.bg').css('height', (jumboHeight-scrolled) + 'px');
-}
-
-$(window).scroll(function(e){
-    parallax();
-});*/
+            function lm(val){ 
+    //console.log(val);    
+    //$('#player').html('<source src = "'+val+'" type = "audio/mpeg">\
+    //<source src = "'+val+'" type = "audio/ogg">');
+                
+    //var audio = document.getElementById('player');
+    //audio.load();
+    //audio.play();
+   // var source = document.getElementById('oggSource');
+      //  source.src='audio/ogg/' + this.parentElement.getAttribute('data-value');
+     var player=document.getElementById('player');
+    var sourceMp3=document.getElementById('srcMp3');
+    $("#player").attr("src",val);
+    $('#metaSong').attr("content",val);
+    
+   player.load(); //just start buffering (preload)
+   player.play(); //start playing
+            
+            }
