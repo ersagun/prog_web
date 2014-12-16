@@ -256,7 +256,7 @@ strVar += "    ";
                         $("#center").append('<div class="thumbnail" style="vertical-align:top; *display: inline;zoom: 1"><img data-src="holder.js/300x300" src="'+retour[i].image_url+'" alt="artist" style="height:300px;widht:300px;"><div class="caption">\
                         <h3>'+retour[i].title+'</h3>\
                         <p style="width:300px;text-align:justify"></p>\
-                        <p><span onclick="lm(\'http:\/\/freedownloads.last.fm\/download'+mp3sec+'.mp3\')" class="btn btn-primary" role="button">listen</span></p>\
+                        <p><span onclick="lm(\''+mp3+'\')" class="btn btn-primary" role="button">listen</span></p>\
                         </div>\
                         </div>');
                      
