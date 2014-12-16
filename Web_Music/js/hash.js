@@ -248,11 +248,11 @@ strVar += "    ";
                     
                     $("#center").empty();
 
-                    $("#center").append('<div class="row" style="text-align:justify;"><div class="col-sm-6 col-md-4">');
+                    $("#center").append('<div class="row" style="text-align:center;"><div class="col-sm-6 col-md-4">');
                 
                     for(i=0;i<retour.length;i++){
                         var mp3=retour[i].mp3_url;
-                        var mp3sec=mp3.substring(35,mp3.length-4);
+                        var mp3sec=mp3.substring(37,mp3.length-4);
                         $("#center").append('<div class="thumbnail" style="vertical-align:top; *display: inline;zoom: 1"><img data-src="holder.js/300x300" src="'+retour[i].image_url+'" alt="artist" style="height:300px;widht:300px;"><div class="caption">\
                         <h3>'+retour[i].title+'</h3>\
                         <p style="width:300px;text-align:justify"></p>\

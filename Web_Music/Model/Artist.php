@@ -172,7 +172,8 @@ private $info;
         $obj->info=$inf;
         array_push($res,$obj);
       }
-      $res;
+      return $res;
+      
     }
     
         // properties
