@@ -16,6 +16,8 @@ private $artist_id;
 private $name;
 private $image_url;
 private $info;
+private $mp3_url;
+private $title;
    
   public function __construct() {
     // rien à faire
@@ -132,7 +134,7 @@ private $info;
     public static function findAll() {
    
       $c = Base::getConnection();
-      $query = "select * from artists";
+      $query = "select * from artists order by name";
       $stmt = $c->prepare($query) ;
       $stmt->execute();
       $res = array();
@@ -152,10 +154,10 @@ private $info;
       return $res;
     }
     
-        public static function findArtistLike($val) {
+        public static function findArtistTrackLike($val) {
    
       $c = Base::getConnection();
-      $query = "select * from artists where name LIKE '".$val."%'";
+      $query = "select * from artists as a left join tracks as t on a.artist_id=t.artist_id  where t.title LIKE '".$val."%' OR a.name LIKE '".$val."%' UNION select * from artists as a right join tracks as t on a.artist_id=t.artist_id  where t.title LIKE '".$val."%' OR a.name LIKE '".$val."%'";
       $stmt = $c->prepare($query) ;
       $stmt->execute();
       $res = array();
@@ -165,11 +167,15 @@ private $info;
         $image = $ligne['image_url'];
         $artist_idd = $ligne['artist_id'];
         $inf = $ligne['info'];
+        $url=$ligne["mp3_url"];
+        $title=$ligne["title"];
         $obj = new Artist();
         $obj->name =$name;
         $obj->image_url=$image;
         $obj->artist_id=$artist_idd;
         $obj->info=$inf;
+        $obj->mp3_url=$url;
+        $obj->title=$title;
         array_push($res,$obj);
       }
       return $res;

@@ -16,7 +16,6 @@
  * This class used when user ask data
  */
 
-require_once("../View/View.php");
 require_once("../Model/Artist.php");
 require_once("../Model/Track.php");
 header('content-type: text/html; charset=utf-8');
@@ -80,7 +79,7 @@ class Controller {
     }
     
     public function search(){
-        $tab=Artist::findArtistLike($_GET['like']); 
+        $tab=Artist::findArtistTrackLike($_GET['like']); 
         echo json_encode($tab);
     }
     

@@ -33,14 +33,13 @@ function searchBar(val){
                 
                     for(i=0;i<retour.length;i++){
                         
-                        $("#center").append('<div class="thumbnail" style="vertical-align:top; *display: inline;zoom: 1"><img data-src="holder.js/300x300" src="'+retour[i].image_url+'" alt="artist" style="height:300px;widht:300px;"><div class="caption">\
-                        <h3>'+retour[i].name+'</h3>\
-                        <p style="width:300px;text-align:justify">'+retour[i].info.substring(0,100)+'</p>\
-                        <p><a href="#aaa" class="btn btn-primary" role="button">Button1</a> <a href="#" class="btn btn-default" role="button">Button2</a></p>\
+                         $("#center").append('<div class="thumbnail" style="margin-left:6px;float: left;width: 350px;height:325px;vertical-align:top; display: inline-block;zoom: 1"><img data-src="holder.js/300x300" src="'+retour[i].image_url+'" alt="artist" style="height:200px;widht:200px;"><div class="caption">\
+                        <h3>'+retour[i].title+'</h3>\
+                        <p style="width:300px;text-align:justify"></p>\
+                        <p><span onclick="lm(\''+retour[i].mp3_url+'\')" class="btn btn-primary" role="button">Listen</span></p>\
                         </div>\
-                        </div>');
-                        
-                    } 
+                        </div>');    
+                    }
                     $("#center").append('</div>');
                 }
             }); 

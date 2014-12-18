@@ -142,7 +142,7 @@ private $name;
     public static function findAll() {
    
       $c = Base::getConnection();
-      $query = "select * from tracks as t left join artists as a on t.artist_id=a.artist_id";
+      $query = "select * from tracks as t left join artists as a on t.artist_id=a.artist_id order by title";
       $stmt = $c->prepare($query) ;
       $stmt->execute();
       $res = array();

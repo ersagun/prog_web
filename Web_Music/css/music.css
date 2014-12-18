@@ -1,6 +1,6 @@
 
 html{
-    	background: #2f3238;
+    	background: #222222;
 	color: #fff;
 }
 
@@ -8,7 +8,7 @@ html{
 body{
     
         font-family: "Ubuntu", Helvetica, Arial, sans-serif!important;
-        	background: #2f3238;
+        	background: #222222;
 	color: black;
 }
 
@@ -75,5 +75,15 @@ z-index: 1;
 
 .thumbnail{
     display:inline-block;
-    
+   
+}
+
+.row{
+    width:750px;
+    overflow: auto;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
 }
