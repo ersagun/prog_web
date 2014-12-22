@@ -27,7 +27,8 @@ class Controller {
             'showArtist' => 'showArtist',
             'signIn' => 'signIn',
                 'search'=>'search',
-                'allMusic'=>'allMusic'
+                'allMusic'=>'allMusic',
+                'insertUser'=>'insertUser'
     
         );
     }
@@ -81,6 +82,18 @@ class Controller {
     public function search(){
         $tab=Artist::findArtistTrackLike($_GET['like']); 
         echo json_encode($tab);
+    }
+    
+    public function insertUser(){
+          $nb = new User();
+          $nb->user_id = $_POST['user_id'];
+          $nb->username = $_POST['username'];
+          $nb->password = $_POST['password'];
+          $nb->email = $_POST['email'];
+          if(!User::compareUser($nb)){
+                $nb.insert();
+                echo "inserted";
+          }
     }
     
 

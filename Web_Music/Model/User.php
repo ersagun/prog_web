@@ -120,7 +120,7 @@ private $email;
  
           $d = $query->fetch(PDO::FETCH_BOTH);
            
-          $nb = new users();
+          $nb = new User();
           $nb->user_id = $d['user_id'];
           $nb->username = $d['username'];
           $nb->password = $d['password'];
@@ -129,6 +129,27 @@ private $email;
   
     }
   
+    
+    public static function compareUser($user) {
+ 
+      $c = Base::getConnection();
+          $query = $c->prepare("select * from user where username=:username") ;
+          $query->bindParam(':username', $user->username, PDO::PARAM_STR);
+          $query->bindParam (':password', $user->password, PDO::PARAM_STR);
+          $query->bindParam (':email', $user->email, PDO::PARAM_STR);
+          $query->bindParam (':user_id', $user->user_id, PDO::PARAM_INT); 
+          $dbres = $query->execute();
+          $d = $query->fetch(PDO::FETCH_BOTH);          
+          $nb = new User();
+          $nb->user_id = $d['user_id'];
+          $nb->username = $d['username'];
+          $nb->password = $d['password'];
+          $nb->email = $d['email'];
+          return $nb;
+    }
+    
+    
+    
      
     public static function findAll() {
    

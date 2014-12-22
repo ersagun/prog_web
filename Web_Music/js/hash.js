@@ -270,7 +270,7 @@ function signup(){
 $('#center').html('<div class="container">\
 <div class="row">\
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">\
-		<form role="form">\
+		<form role="form" id="formSignUp">\
 			<h2>Please Sign Up<small>Its free and always will be.</small></h2>\
 			<hr class="colorgraph">\
 			<div class="row">\
@@ -316,7 +316,7 @@ $('#center').html('<div class="container">\
 			</div>	\
 			<hr class="colorgraph">\
 			<div class="row">\
-				<div class="col-xs-12 col-md-6"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>\
+				<div class="col-xs-12 col-md-6"><input type="submit" value="Register" onClick="insertUser()"class="btn btn-primary btn-block btn-lg" tabindex="7"></div>\
 				<div class="col-xs-12 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>\
 			</div>\
 		</form>\
@@ -346,6 +346,22 @@ $('#center').html('<div class="container">\
 	</div><!-- /.modal-dialog -->\
 </div><!-- /.modal -->\
 </div>');    
+    }
+    
+    function insertUser(){
+        data=$("#formSignUp").serialize();
+        $.ajax({ 
+                type: "POST", 
+                url: "../Controller/Controller.php?a=insertUser", 
+                data: data,
+                error: function() { 
+                    console.log("erreur !"); 
+                },
+                success: function(retour){
+                            $("#center").html("<p>"+$_REQUEST["first_name"]+"</p>");
+                    
+                }
+            });
     }
     
    
