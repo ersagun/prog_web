@@ -1,5 +1,5 @@
 <?php
-//require_once("../View/View.php");
+require_once("../Model/User.php");
 //echo file_get_contents("../View/View.html");
 
 /*
@@ -86,13 +86,16 @@ class Controller {
     
     public function insertUser(){
           $nb = new User();
-          $nb->user_id = $_POST['user_id'];
           $nb->username = $_POST['username'];
           $nb->password = $_POST['password'];
           $nb->email = $_POST['email'];
-          if(!User::compareUser($nb)){
+          $userFound=User::compareUser($nb);
+          
+          if(!$userFound->username==""){
                 $nb.insert();
                 echo "inserted";
+          }else{
+              echo "problem insertion";
           }
     }
     

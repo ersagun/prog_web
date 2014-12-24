@@ -9,9 +9,12 @@
 private $username;
 private $password;
 private $email;
+static $uuser_id=1;
+
    
   public function __construct() {
-    // rien à faire
+      $uuser_id=$uuser_id+1;
+      $user_id=$uuser_id;
   }
  
 
@@ -72,7 +75,7 @@ private $email;
  
   public function delete() {
    
-    if (!isset($this->id)) {
+    if (!isset($this->user_id)) {
         throw new Exception(__CLASS__ . ": Primary Key undefined : cannot delete");
     }
      
@@ -91,12 +94,12 @@ private $email;
          
    
     public function insert() {
-        if (!isset($this->id)) {
-          throw new Exception(__CLASS__ . ": Primary Key undefined : cannot delete");
+        if (!isset($this->user_id)) {
+          throw new Exception(__CLASS__ . ": Primary Key undefined : cannot insert");
         }
         try{
             $c = Base::getConnection();
-            $query = "insert into users values (NULL,:username,:password,:email)";
+            $query = "insert into users(user_id,username,password,email) values (NULL,:username,:password,:email)";
             $query->bindParam(':username', $this->username, PDO::PARAM_STR);             
             $query->bindParam (':password', $this->password, PDO::PARAM_STR);
             $query->bindParam (':email', $this->email, PDO::PARAM_STR);
@@ -133,11 +136,11 @@ private $email;
     public static function compareUser($user) {
  
       $c = Base::getConnection();
-          $query = $c->prepare("select * from user where username=:username") ;
           $query->bindParam(':username', $user->username, PDO::PARAM_STR);
           $query->bindParam (':password', $user->password, PDO::PARAM_STR);
           $query->bindParam (':email', $user->email, PDO::PARAM_STR);
           $query->bindParam (':user_id', $user->user_id, PDO::PARAM_INT); 
+          $query = $c->prepare("select * from users where username=:username or email:email") ;
           $dbres = $query->execute();
           $d = $query->fetch(PDO::FETCH_BOTH);          
           $nb = new User();
@@ -173,5 +176,9 @@ private $email;
       }
       return $res;
     }
-  
- }
+
+    public function jsonSerialize() {
+        return get_object_vars($this);
+    }
+
+}
