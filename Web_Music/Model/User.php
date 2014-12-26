@@ -9,12 +9,9 @@
 private $username;
 private $password;
 private $email;
-static $uuser_id=1;
 
    
   public function __construct() {
-      $uuser_id=$uuser_id+1;
-      $user_id=$uuser_id;
   }
  
 
@@ -94,18 +91,15 @@ static $uuser_id=1;
          
    
     public function insert() {
-        if (!isset($this->user_id)) {
-          throw new Exception(__CLASS__ . ": Primary Key undefined : cannot insert");
-        }
         try{
             $c = Base::getConnection();
-            $query = "insert into users(user_id,username,password,email) values (NULL,:username,:password,:email)";
+            $query = $c->prepare("insert into users(user_id,username,password,email) values (NULL,:username,:password,:email)");
             $query->bindParam(':username', $this->username, PDO::PARAM_STR);             
             $query->bindParam (':password', $this->password, PDO::PARAM_STR);
             $query->bindParam (':email', $this->email, PDO::PARAM_STR);
 
-            $nb=$pdo->exec($query);
-            $this->__set("user_id", $pdo->lastInsertId());
+            $nb = $query->execute();
+            $this->__set("user_id", $c->lastInsertId());
             return $nb;
         }catch(PDOException $e){
             print $e->getMessage();
@@ -136,12 +130,9 @@ static $uuser_id=1;
     public static function compareUser($user) {
  
       $c = Base::getConnection();
-          $query->bindParam(':username', $user->username, PDO::PARAM_STR);
-          $query->bindParam (':password', $user->password, PDO::PARAM_STR);
-          $query->bindParam (':email', $user->email, PDO::PARAM_STR);
-          $query->bindParam (':user_id', $user->user_id, PDO::PARAM_INT); 
-          $query = $c->prepare("select * from users where username=:username or email:email") ;
-          $dbres = $query->execute();
+      $c->exec("SET CHARACTER SET utf8");
+          $query = $c->prepare("select * from users where username=:username or email=:email") ;
+          $dbres = $query->execute(array(':username'=>$user->username,':email'=>$user->email));
           $d = $query->fetch(PDO::FETCH_BOTH);          
           $nb = new User();
           $nb->user_id = $d['user_id'];

@@ -10,31 +10,54 @@ and open the template in the editor.
 
 /*Start*/
 $(document).ready(function(){
-    if(!location.hash){
+   
+    if(location.hash){
+        updateMyApp(getLocationHash());
+    }else{
         location='#!';
     }
-    
-    
-     $("#formSignUp").submit(function(){
-        var user_name = $('input[name=username]').val();
-        var email = $('input[name=email]').val();
-        var password = $('input[name=password]').val();
-        var querystring = "a=insertUser&username="+user_name+"&email="+email+"&password="+password;
  
-        $.ajax({
-            url: '../Controller/Controller.php',
-            type: "POST",
-            data: querystring,
-            success: function(data) {
-                console.log(data);
-                    }
+   // Lorsque je soumets le formulaire
+    $('#formSU').on('submit', function(e) {
+        e.preventDefault(); // J'empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
+ 
+        var $this = $(this); // L'objet jQuery du formulaire
+ 
+        // Je récupère les valeurs
+        var a = $('#a').val();
+        var username = $('#username').val();
+        var email = $('#email').val();
+        var password = $('#password').val();
+ 
+        // Je vérifie une première fois pour ne pas lancer la requête HTTP
+        // si je sais que mon PHP renverra une erreur
+        if(username === '' || password === ''|| email === '') {
+            alert('Les champs doivent êtres remplis');
+        } else {
+            // Envoi de la requête HTTP en mode asynchrone
+            $.ajax({
+                url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
+                type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+                data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+                dataType : 'text',
+                error: function() { 
+             $("#center").empty();
+            $("#center").append('<p>Erreur il existe un utilisateur avec ce username ou mdp ! </p>'); 
+        },
+                success: function(html) { // Je récupère la réponse du fichier PHP
+                     $("#center").empty();
+            $("#center").append('<p>Monsieur'+html+' vous etes bien inscrit ! </p>');    
+                }
             });
-            return false;
-        });
-    
+        }
+    });
+   
+    window.onhashchange = function() {updateMyApp(getLocationHash());}
+    //setInterval(updateMyApp(getLocationHash(),500));
     
     
 });
+
 
 function searchBar(val){
     $.ajax({ 
@@ -62,7 +85,8 @@ function searchBar(val){
             $("#center").append('</div>');
         }
     }); 
-}
+    }
+
 function listenMusic(val){ 
     var player=document.getElementById('player');
     var sourceMp3=document.getElementById('srcMp3');
@@ -70,4 +94,25 @@ function listenMusic(val){
     $('#metaSong').attr("content",val);
     player.load(); //just start buffering (preload)
     player.play(); //start playing
+}
+
+
+function checkUser(){
+        data= $("#formSignUp").serialize();
+        console.log('Val :::'+data);
+        $.ajax({ 
+        type: "POST", 
+        url: "../Controller/Controller.php", 
+        data: data,
+        dataType:"text",
+        error: function() { 
+            console.log("erreur !"); 
+        },
+        success: function(retour){
+            $("#center").empty();
+
+            $("#center").append('<p>checked'+retour+'</p>');
+        }
+    }); 
+location='#CheckUser';
 }

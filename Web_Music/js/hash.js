@@ -4,19 +4,7 @@
  * and open the template in the editor.
  */
 
-var hash={'#SignIn':'signIn','#!':'firstPage','#SignUp':'signUp','#AllMusic':'allMusic'};
-
-$(document).ready(function(){    
-    console.log("in hash.js :");
-    window.onhashchange = function() {updateMyApp(getLocationHash());}
-    //setInterval(updateMyApp(getLocationHash(),500));
-    
-    
-    if(location.hash){
-        updateMyApp(getLocationHash());
-    }
-});
-
+var hash={'#SignIn':'signIn','#!':'firstPage','#SignUp':'signUp','#AllMusic':'allMusic','#CheckUser':'checkUser'};
 
 /**
  * Called to change the state of my app based on specified value.
@@ -204,7 +192,6 @@ function firstPage(){
             console.log("erreur !"); 
         },
         success: function(retour){
-            console.log("haha");
             
             $("#center").empty();
             
@@ -262,14 +249,14 @@ function signUp(){
     $('#center').html('<div class="container">\
 <div class="row">\
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">\
-		<form role="form" id="formSignUp" method="POST" action="#">\
+		<form role="form" id="formSU" action="../Controller/Controller.php" method="POST" >\
 			<h2>Please Sign Up <br><small>Its free and always will be.</small></h2>\
 			<hr class="colorgraph">\
 			<div class="row">\
 				<div class="col-xs-12 col-sm-6 col-md-6">\
 					<div class="form-group">\
-                                         <input type="hidden" name="a" value="insertUser">\
-                                         <input type="text" name="username" id="user_name" class="form-control input-lg" placeholder="User Name" tabindex="1">\
+                                         <input type="hidden" id="a" name="a" value="insertUser">\
+                                         <input type="text" name="username" id="username" class="form-control input-lg" placeholder="User Name" tabindex="1">\
 					</div>\
 				</div>\
 			</div>\
@@ -285,13 +272,15 @@ function signUp(){
 			</div>\
 			<hr class="colorgraph">\
 			<div class="row">\
-				<div class="col-xs-12 col-md-6"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>\
+				<div class="col-xs-12 col-md-6"><input type="submit" id="submitt" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>\
 			</div>\
 		</form>\
 	</div>\
 </div>\
 </div>');    
 }
+
+
 /**
 function checkUser(){
     data=$("#formSignUp").serialize();

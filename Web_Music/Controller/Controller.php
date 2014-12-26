@@ -90,12 +90,10 @@ class Controller {
           $nb->password = $_POST['password'];
           $nb->email = $_POST['email'];
           $userFound=User::compareUser($nb);
-          
-          if(!$userFound->username==""){
-                $nb.insert();
-                echo "inserted";
-          }else{
-              echo "problem insertion";
+          echo $userFound->username;
+          if(($userFound->username!=$_POST['username'])||($userFound->email!=$_POST['email'])){
+                $nb->insert();
+                echo $_POST['username'];
           }
     }
     
