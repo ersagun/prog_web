@@ -231,10 +231,10 @@ function allMusic(){
             
             for(i=0;i<retour.length;i++){
                 
-                $("#center").append('<div class="thumbnail" style="margin-left:6px;float: left;width: 350px;height:325px;vertical-align:top; display: inline-block;zoom: 1"><img data-src="holder.js/300x300" src="'+retour[i].image_url+'" alt="artist" style="height:200px;widht:200px;"><div class="caption">\
-                        <h3>'+retour[i].title.substring(0,21)+'</h3>\
+                $("#center").append('<div class="thumbnail" style="margin-left:6px;float: left;width: 275px;height:275px;vertical-align:top; display: inline-block;zoom: 1"><img data-src="holder.js/300x300" src="'+retour[i].image_url+'" alt="artist" style="height:150px;widht:150px;"><div class="caption">\
+                        <p>'+retour[i].title.substring(0,21)+'</p>\
                         <p style="width:300px;text-align:justify"></p>\
-                        <p><span onclick="lm(\''+retour[i].mp3_url+'\')" class="btn btn-primary" role="button">listen</span></p>\
+                        <p><span onclick="listenMusic(\''+retour[i].mp3_url+'\')" class="btn btn-primary" role="button">listen</span></p>\
                         </div>\
                         </div>');
                 
@@ -279,25 +279,3 @@ function signUp(){
 </div>\
 </div>');    
 }
-
-
-/**
-function checkUser(){
-    data=$("#formSignUp").serialize();
-    console.log("hahah !: : : :"+data);
-    
-    $.ajax({ 
-        type: "POST", 
-        url: "../Controller/Controller.php",  
-        data: data,
-        dataType:"text",
-        error: function(reponse) { 
-            $("#center").html("<p>"+reponse+"</p>");
-        },
-        success: function(reponse){
-            $("#center").html("<p> success ====: "+reponse+"</p>");      
-        }
-    });
-}
-**/
-

@@ -42,11 +42,16 @@ $(document).ready(function(){
                 dataType : 'text',
                 error: function() { 
              $("#center").empty();
-            $("#center").append('<p>Erreur il existe un utilisateur avec ce username ou mdp ! </p>'); 
+                 $("#center").append('<p>Ce nom d\'utilisateur ou cet adresse email a dèja été utilisé </p>');  
         },
                 success: function(html) { // Je récupère la réponse du fichier PHP
-                     $("#center").empty();
-            $("#center").append('<p>Monsieur'+html+' vous etes bien inscrit ! </p>');    
+            if(html=="error"){
+                 $("#center").empty();
+                   $("#center").append('<p>Ce nom d\'utilisateur ou cet adresse email a dèja été utilisé </p>');  
+            }else{
+                $("#center").empty();
+            $("#center").append('<p>Monsieur '+html+' vous etes bien inscrit ! </p>'); 
+            }
                 }
             });
         }
@@ -96,23 +101,3 @@ function listenMusic(val){
     player.play(); //start playing
 }
 
-
-function checkUser(){
-        data= $("#formSignUp").serialize();
-        console.log('Val :::'+data);
-        $.ajax({ 
-        type: "POST", 
-        url: "../Controller/Controller.php", 
-        data: data,
-        dataType:"text",
-        error: function() { 
-            console.log("erreur !"); 
-        },
-        success: function(retour){
-            $("#center").empty();
-
-            $("#center").append('<p>checked'+retour+'</p>');
-        }
-    }); 
-location='#CheckUser';
-}

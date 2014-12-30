@@ -133,12 +133,17 @@ private $email;
       $c->exec("SET CHARACTER SET utf8");
           $query = $c->prepare("select * from users where username=:username or email=:email") ;
           $dbres = $query->execute(array(':username'=>$user->username,':email'=>$user->email));
-          $d = $query->fetch(PDO::FETCH_BOTH);          
+          $d = $query->fetch(PDO::FETCH_BOTH);   
+          if(isset($d["username"])){
           $nb = new User();
           $nb->user_id = $d['user_id'];
           $nb->username = $d['username'];
           $nb->password = $d['password'];
           $nb->email = $d['email'];
+          }else{
+           $nb = new User();  
+           $nb->username ="";
+          }
           return $nb;
     }
     
