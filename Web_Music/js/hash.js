@@ -118,8 +118,8 @@ function allArtist(){
                 
                 $("#center").append('<div id="artist" class="thumbnail"><img  data-src="holder.js/300x300" src="'+retour[i].image_url+'" alt="artist" style="height:150px;width:150px;"><div class="caption">\
                         <h3>'+retour[i].name+'</h3>\
-                        <p style="width:220px;text-align:justify">'+retour[i].info.substring(0,98)+'</p>\
-                        <p>< class="btn btn-primary" role="button" onclick="seeArtistSongs(\''+retour[i].artist_id+'\')">See</button>\
+                        <p style="width:220px;text-align:justify">'+retour[i].info.substring(0,75)+'</p>\
+                        <p><button class="btn btn-primary" role="button" onclick="seeArtistSongs(\''+retour[i].artist_id+'\')">See</button></p>\
                         </div>\
                         </div>');
                 

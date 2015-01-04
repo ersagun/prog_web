@@ -1,4 +1,4 @@
-//@author ersagun
+/*author ersagun*/
 
 
 html{
@@ -23,14 +23,13 @@ body{
 #title{
 	position:absolute;
 	width:500px;
-	height:-200px;
 	color:red;
 }
 
 .logo{
 	position:absolute;
         width:250px;
-        heigth:250px;
+        height:250px;
 	left:5%;
 	top: 10%;
 	z-index: 1;
@@ -39,7 +38,7 @@ body{
 #lg{
 	position:absolute;
         width:40px;
-        heigth:40px;
+        height:40px;
 	left:1%;
 	z-index: 1;
 }
@@ -65,11 +64,10 @@ body{
 #playlist{
     width:15%;
     height:100%;
-position:fixed;
+    position:fixed;
     top:50px;
     right:0;
     border-style: solid;
-    border-width: 0,5;
     border-color: black;
     background-color: white;
 z-index: 1;
@@ -90,10 +88,9 @@ z-index: 1;
     margin-left:6px;
     float: left;
     width: 275px;
-    height:350px;
+    height:370px;
     vertical-align:top; 
     display: inline-block;
-    zoom: 1;
 }
 
 #music{
@@ -103,5 +100,4 @@ z-index: 1;
     height:275px;
     vertical-align:top; 
     display: inline-block;
-    zoom: 1;
 }
