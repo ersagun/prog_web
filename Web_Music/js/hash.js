@@ -197,7 +197,7 @@ function signUp(){
 			</div>\
 			<hr class="colorgraph">\
 			<div class="row">\
-				<div class="col-xs-12 col-md-6"><button type="button" id="buttton" class="btn btn-primary btn-block btn-lg" tabindex="7">Register</button></div>\
+				<div class="col-xs-12 col-md-6"><button type="button" onclick="checkUser" class="btn btn-primary btn-block btn-lg" tabindex="7">Register</button></div>\
 			</div>\
 		</form>\
 	</div>\
