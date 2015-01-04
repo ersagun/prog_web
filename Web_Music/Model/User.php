@@ -14,7 +14,11 @@ private $email;
   public function __construct() {
   }
  
-
+/**
+ * 
+ * @return type
+ * 
+ */
   public function __toString() {
         return "[". __CLASS__ . "] user_id : ". $this->user_id . ":
                    username  ". $this->username  .":
@@ -22,7 +26,12 @@ private $email;
                    . " :email ". $this->email ;
   }
  
-    
+    /**
+     * 
+     * @param type $attr_name
+     * @return type
+     * @throws Exception
+     */
    public function __get($attr_name) {
     if (property_exists( __CLASS__, $attr_name)) { 
       return $this->$attr_name;
@@ -31,7 +40,11 @@ private $email;
     throw new Exception($emess, 45);
   }
    
-
+    /**
+     * 
+     * @param type $attr_name
+     * @param type $attr_val
+     */
     public function __set($attr_name, $attr_val) {
      
     if (property_exists( __CLASS__, $attr_name)) { 
@@ -41,7 +54,12 @@ private $email;
      
   }
  
-
+  /**
+   * 
+   * @return type
+   * @throws Exception
+   * Update a user
+   */
   public function update() {
    
     if (!isset($this->id)) {
@@ -69,7 +87,12 @@ private $email;
     }
   }
  
- 
+ /**
+  * 
+  * @return type
+  * @throws Exception
+  * Delete a user
+  */
   public function delete() {
    
     if (!isset($this->user_id)) {
@@ -89,7 +112,11 @@ private $email;
     } 
 }
          
-   
+   /**
+    * 
+    * @return type
+    * Insert a user
+    */
     public function insert() {
         try{
             $c = Base::getConnection();
@@ -107,7 +134,12 @@ private $email;
     } 
 
 
-
+    /**
+     * 
+     * @param type $user_id
+     * @return \User
+     * Find by user id a user
+     */
     public static function findByUserId($user_id) {
  
       $c = Base::getConnection();
@@ -126,7 +158,12 @@ private $email;
   
     }
   
-    
+    /**
+     * 
+     * @param type $user
+     * @return \User
+     * compare a user gived on parameter
+     */
     public static function compareUser($user) {
  
       $c = Base::getConnection();
@@ -149,7 +186,11 @@ private $email;
     
     
     
-     
+    /**
+     * 
+     * @return array
+     * Find all users
+     */
     public static function findAll() {
    
       $c = Base::getConnection();
@@ -172,7 +213,9 @@ private $email;
       }
       return $res;
     }
+  // properties
 
+    // function called when encoded with json_encode
     public function jsonSerialize() {
         return get_object_vars($this);
     }

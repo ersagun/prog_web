@@ -9,7 +9,10 @@ require_once("Base.php");
  */
 
 //setup php for working with Unicode data
-
+/**
+ * Description of Artist
+ *
+ */
 class Artist implements JsonSerializable{
  
 private $artist_id;
@@ -20,9 +23,13 @@ private $mp3_url;
 private $title;
    
   public function __construct() {
-    // rien à faire
   }
  
+  /**
+   * 
+   * @return type
+   * this function return a string present an artist
+   */
   public function __toString() {
         return "[". __CLASS__ . "] artist_id : ". $this->artist_id . ":
                    name  ". $this->name  .":
@@ -30,7 +37,12 @@ private $title;
                    . " :information ". $this->info;
   }
  
-    
+    /**
+     * 
+     * @param type $attr_name
+     * @return type
+     * @throws Exception
+     */
    public function __get($attr_name) {
     if (property_exists( __CLASS__, $attr_name)) { 
       return $this->$attr_name;
@@ -38,7 +50,11 @@ private $title;
     $emess = __CLASS__ . ": unknown member $attr_name (getAttr)";
     throw new Exception($emess, 45);
   }
-   
+   /**
+    * 
+    * @param type $attr_name
+    * @param type $attr_val
+    */
     public function __set($attr_name, $attr_val) {
      
     if (property_exists( __CLASS__, $attr_name)) { 
@@ -48,6 +64,12 @@ private $title;
      
   }
  
+  /**
+   * 
+   * @return type
+   * @throws Exception
+   * Update an artist on db
+   */
   public function update() {
    
     if (!isset($this->artist_id)) {
@@ -75,7 +97,12 @@ private $title;
     }
   }
  
- 
+ /**
+  * 
+  * @return type
+  * @throws Exception
+  * Delete an artist on db
+  */
   public function delete() {
    
     if (!isset($this->artist_id)) {
@@ -95,7 +122,12 @@ private $title;
     } 
 }
          
-   
+   /**
+    * 
+    * @return type
+    * @throws Exception
+    * Insert an artist on db
+    */
     public function insert() {
         if (!isset($this->artist_id)) {
           throw new Exception(__CLASS__ . ": Primary Key undefined : cannot delete");
@@ -113,6 +145,13 @@ private $title;
             print $e->getMessage();
         }
     } 
+    
+    /**
+     * 
+     * @param type $artist_id
+     * @return \Artist
+     * Find an artist on db by id
+     */
     public static function findByartist_id($artist_id) {
  
       $c = Base::getConnection();
@@ -130,7 +169,11 @@ private $title;
           return $nb;
     }
   
-     
+    /**
+     * 
+     * @return array
+     * Return an array of artist
+     */
     public static function findAll() {
    
       $c = Base::getConnection();
@@ -154,7 +197,13 @@ private $title;
       return $res;
     }
     
-        public static function findArtistTrackLike($val) {
+    /**
+     * 
+     * @param type $val
+     * @return array
+     * Find an artist or tracks by the singer name or a song by title name
+     */
+    public static function findArtistTrackLike($val) {
    
       $c = Base::getConnection();
       $query = "select * from artists as a left join tracks as t on a.artist_id=t.artist_id  where t.title LIKE '".$val."%' OR a.name LIKE '".$val."%' UNION select * from artists as a right join tracks as t on a.artist_id=t.artist_id  where t.title LIKE '".$val."%' OR a.name LIKE '".$val."%'";

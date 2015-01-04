@@ -9,7 +9,6 @@
 /**
  * Description of Tracks
  *
- * @author ersagun
  */
 class Track implements JsonSerializable {
   private $artist_id;
@@ -20,7 +19,6 @@ private $image_url;
 private $name;
    
   public function __construct() {
-    // rien à faire
   }
  
 
@@ -31,7 +29,12 @@ private $name;
                                   " :mp3_url ". $this->mp3_url;
   }
  
-    
+    /**
+     * 
+     * @param type $attr_name
+     * @return type
+     * @throws Exception
+     */
    public function __get($attr_name) {
     if (property_exists( __CLASS__, $attr_name)) { 
       return $this->$attr_name;
@@ -40,7 +43,11 @@ private $name;
     throw new Exception($emess, 45);
   }
    
-
+    /**
+    *  
+    * @param type $attr_name
+    * @param type $attr_val
+    */
     public function __set($attr_name, $attr_val) {
      
     if (property_exists( __CLASS__, $attr_name)) { 
@@ -50,7 +57,12 @@ private $name;
      
   }
  
-
+  /**
+   * 
+   * @return type
+   * @throws Exception
+   * Upadte a track
+   */
   public function update() {
    
     if (!isset($this->id)) {
@@ -78,7 +90,12 @@ private $name;
     }
   }
  
- 
+ /**
+  * 
+  * @return type
+  * @throws Exception
+  * Delete a track
+  */
   public function delete() {
    
     if (!isset($this->id)) {
@@ -98,7 +115,12 @@ private $name;
     } 
 }
          
-   
+   /**
+    * 
+    * @return type
+    * @throws Exception
+    * Insert a track
+    */
     public function insert() {
         if (!isset($this->id)) {
           throw new Exception(__CLASS__ . ": Primary Key undefined : cannot delete");
@@ -119,7 +141,12 @@ private $name;
     } 
 
 
-
+    /**
+     * 
+     * @param type $track_id
+     * @return \Track
+     * Find by track id 
+     */
     public static function findByTrack_id($track_id) {
  
       $c = Base::getConnection();
@@ -138,7 +165,11 @@ private $name;
   
     }
   
-     
+    /**
+     * 
+     * @return array
+     * Find all tracks on db
+     */
     public static function findAll() {
    
       $c = Base::getConnection();
@@ -166,6 +197,9 @@ private $name;
       return $res;
     }
 
+        // properties
+
+    // function called when encoded with json_encode
     public function jsonSerialize() {
         return get_object_vars($this);
     }

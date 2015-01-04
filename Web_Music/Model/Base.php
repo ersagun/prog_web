@@ -7,7 +7,12 @@
 class Base { 
   
     private static $dblink ;     
-      
+    
+    /**
+     * 
+     * @return \PDO
+     * This function connect to the db
+     */
     private static function connect(){ 
         try{ 
             require_once ("config.php");
@@ -26,7 +31,12 @@ class Base {
         return $db; 
           
     } 
-  
+    /**
+     * 
+     * @return type
+     * This function verify if the connection is successed or not, if the connection exist, function get it else, function 
+     * call connect to connecting.
+     */
     public static function getConnection(){ 
         if(isset(self::$dblink)){ 
           

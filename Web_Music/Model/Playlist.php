@@ -5,6 +5,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+/**
+ * Description of Playlist
+ *
+ */
 class Playlist implements JsonSerializable{
 
 private $user_id;
@@ -13,17 +18,25 @@ private $playlist_name;
 
    
   public function __construct() {
-    // rien à faire
   }
  
-
+  /**
+   * 
+   * @return type
+   * Return a string with playlist informations
+   */
   public function __toString() {
         return "[". __CLASS__ . "] user_id : ". $this->user_id . ":
                    playlist_id  ". $this->playlist_id  .":
                    playlist_name ". $this->playlist_name;
   }
  
-    
+   /**
+    * 
+    * @param type $attr_name
+    * @return type
+    * @throws Exception
+    */
    public function __get($attr_name) {
     if (property_exists( __CLASS__, $attr_name)) { 
       return $this->$attr_name;
@@ -32,7 +45,11 @@ private $playlist_name;
     throw new Exception($emess, 45);
   }
    
-
+  /**
+   * 
+   * @param type $attr_name
+   * @param type $attr_val
+   */
     public function __set($attr_name, $attr_val) {
      
     if (property_exists( __CLASS__, $attr_name)) { 
@@ -42,7 +59,12 @@ private $playlist_name;
      
   }
  
-
+/**
+ * 
+ * @return type
+ * @throws Exception
+ * Update a playlist
+ */
   public function update() {
    
     if (!isset($this->user_id)) {
@@ -69,7 +91,12 @@ private $playlist_name;
     }
   }
  
- 
+ /**
+  * 
+  * @return type
+  * @throws Exception
+  * Delete a playlist
+  */
   public function delete() {
    
     if (!isset($this->user_id)) {
@@ -89,7 +116,12 @@ private $playlist_name;
     } 
 }
          
-   
+   /**
+    * 
+    * @return type
+    * @throws Exception
+    * Insert a playlist
+    */
     public function insert() {
         if (!isset($this->user_id)) {
           throw new Exception(__CLASS__ . ": Primary Key undefined : cannot delete");
@@ -109,7 +141,12 @@ private $playlist_name;
     } 
 
 
-
+    /**
+     * 
+     * @param type $playlist_id
+     * @return \playlists
+     * Find a playlist by playlist id
+     */
     public static function findByplaylist_id($playlist_id) {
  
       $c = Base::getConnection();
@@ -127,7 +164,11 @@ private $playlist_name;
   
     }
   
-     
+     /**
+      * 
+      * @return array
+      * Find all playlists
+      */
     public static function findAll() {
    
       $c = Base::getConnection();
@@ -148,9 +189,11 @@ private $playlist_name;
       }
       return $res;
     }
+    // properties
 
+    // function called when encoded with json_encode
     public function jsonSerialize() {
-        
+         return get_object_vars($this);
     }
 
 }
