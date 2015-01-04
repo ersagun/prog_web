@@ -28,7 +28,7 @@ $(document).ready(function(){
     if(location.hash && ($.inArray(getLocationHash(),hash)!=-1)){
         updateMyApp(getLocationHash());
     }else{
-        location='#!';
+        location='#AllMusic';
     }
     
     
@@ -197,7 +197,7 @@ function signUp(){
 			</div>\
 			<hr class="colorgraph">\
 			<div class="row">\
-				<div class="col-xs-12 col-md-6"><button type="button" onclick="checkUser" class="btn btn-primary btn-block btn-lg" tabindex="7">Register</button></div>\
+				 <div class="col-xs-12 col-md-6"><input type="submit" id="submitt" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>\
 			</div>\
 		</form>\
 	</div>\

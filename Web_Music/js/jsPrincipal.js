@@ -11,9 +11,8 @@ and open the template in the editor.
 /*Start*/
 $(document).ready(function(){
 
-/**
    // Form signUp
-    $('#buttton').click(function(e) {
+    $('#FormSU').click(function(e) {
         //e.preventDefault(); // J'empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
         //e.stopPropagation();
         var $this = $(this); // L'objet jQuery du formulaire
@@ -52,9 +51,7 @@ $(document).ready(function(){
         }
        // return false;
     });
-    **/
-    
-        
+     
     
         // Form signIn
     $('#loginform').on('submit', function(e) {
@@ -146,42 +143,4 @@ function listenMusic(val){
     player.play(); //start playing
 }
 
-    //checkUser
-    
-    function checkUser(){
-  var $this = $(this); // L'objet jQuery du formulaire
- 
-        // Je récupère les valeurs
-        var a = $('#a').val();
-        var username = $('#username').val();
-        var email = $('#email').val();
-        var password = $('#password').val();
- 
-        // Je vérifie une première fois pour ne pas lancer la requête HTTP
-        // si je sais que mon PHP renverra une erreur
-        if(username === '' || password === ''|| email === '') {
-            alert('Les champs doivent êtres remplis');
-        } else {
-            // Envoi de la requête HTTP en mode asynchrone
-            $.ajax({
-                url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
-                type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-                data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
-                dataType : 'text',
-                error: function() { 
-             $("#center").empty();
-                 $("#center").append('<p>Une erreur est survenue ! Veuillez réessayer.</p>');  
-        },
-                success: function(html) { // Je récupère la réponse du fichier PHP
-            if(html=="error"){
-                 $("#center").empty();
-                   $("#center").append('<p>Ce nom d\'utilisateur ou cet adresse email a déjà été utilisé </p>');  
-            }else{
-                $("#center").empty();
-            $("#center").append('<p>Cher(e) '+html+', vous êtes bien inscrit ! </p>'); 
-            }
-                }
-            });
-        }
-    }
-
+   
