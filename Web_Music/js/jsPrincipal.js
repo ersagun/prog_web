@@ -12,9 +12,9 @@ and open the template in the editor.
 $(document).ready(function(){
 
    // Form signUp
-    $('#formSU').on('submit', function(e) {
-        e.preventDefault(); // J'empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
- 
+    $('#formSU').on('click', function(e) {
+        //e.preventDefault(); // J'empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
+        //e.stopPropagation();
         var $this = $(this); // L'objet jQuery du formulaire
  
         // Je récupère les valeurs
@@ -49,11 +49,12 @@ $(document).ready(function(){
                 }
             });
         }
+       // return false;
     });
     
         // Form signIn
     $('#loginform').on('submit', function(e) {
-        e.preventDefault();
+ 
         var $this = $(this);
         var a = $('#a').val();
         var username = $('#username').val();
