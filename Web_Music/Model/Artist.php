@@ -1,30 +1,30 @@
 <?php
 require_once("Base.php");
-
-        
+    
+    
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+     
 //setup php for working with Unicode data
 /**
  * Description of Artist
  *
  */
 class Artist implements JsonSerializable{
- 
+    
 private $artist_id;
 private $name;
 private $image_url;
 private $info;
 private $mp3_url;
 private $title;
-   
+    
   public function __construct() {
   }
- 
+      
   /**
    * 
    * @return type
@@ -36,7 +36,7 @@ private $title;
                    url ". $this->image_url
                    . " :information ". $this->info;
   }
- 
+      
     /**
      * 
      * @param type $attr_name
@@ -56,14 +56,14 @@ private $title;
     * @param type $attr_val
     */
     public function __set($attr_name, $attr_val) {
-     
+        
     if (property_exists( __CLASS__, $attr_name)) { 
       $this->$attr_name=$attr_val;
     }
     $emess = __CLASS__ . ": unknown member $attr_name (setAttr)";
-     
+        
   }
- 
+      
   /**
    * 
    * @return type
@@ -71,13 +71,13 @@ private $title;
    * Update an artist on db
    */
   public function update() {
-   
+      
     if (!isset($this->artist_id)) {
         throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
     } 
- 
+        
     try {
- 
+        
         $c = Base::getConnection();
         $query = $c->prepare( "update artists set name = :name, image_url = :image, info = :info
                                        where artist_id = :artist_id");    
@@ -88,7 +88,7 @@ private $title;
         $query->bindParam (':image', $this->image_url, PDO::PARAM_STR);
         $query->bindParam (':info', $this->info, PDO::PARAM_STR);
         $query->bindParam (':artist_id', $this->artist_id, PDO::PARAM_INT); 
-        
+            
         $nb = $query->execute();
         return $nb ;
     }
@@ -96,7 +96,7 @@ private $title;
         print $e->getMessage() ;
     }
   }
- 
+      
  /**
   * 
   * @return type
@@ -104,12 +104,12 @@ private $title;
   * Delete an artist on db
   */
   public function delete() {
-   
+      
     if (!isset($this->artist_id)) {
         throw new Exception(__CLASS__ . ": Primary Key undefined : cannot delete");
     }
-     
-    
+        
+        
     try {
         $c = Base::getConnection();
         $query = $c->prepare("delete from artists where artist_id= :artist_id");
@@ -121,7 +121,7 @@ private $title;
         print $e->getMessage();
     } 
 }
-         
+    
    /**
     * 
     * @return type
@@ -145,7 +145,7 @@ private $title;
             print $e->getMessage();
         }
     } 
-    
+        
     /**
      * 
      * @param type $artist_id
@@ -153,14 +153,14 @@ private $title;
      * Find an artist on db by id
      */
     public static function findByartist_id($artist_id) {
- 
+        
       $c = Base::getConnection();
           $query = $c->prepare("select * from artists where artist_id=:artist_id") ;
           $query->bindParam(':artist_id', $artist_id, PDO::PARAM_INT);
           $dbres = $query->execute();
- 
+              
           $d = $query->fetch(PDO::FETCH_BOTH);
-           
+              
           $nb = new Artist();
           $nb->artist_id = $d['artist_id'];
           $nb->name = $d['name'];
@@ -168,14 +168,14 @@ private $title;
           $nb->info = $d['info'];
           return $nb;
     }
-  
+        
     /**
      * 
      * @return array
      * Return an array of artist
      */
     public static function findAll() {
-   
+        
       $c = Base::getConnection();
       $query = "select * from artists order by name";
       $stmt = $c->prepare($query) ;
@@ -196,7 +196,7 @@ private $title;
       }
       return $res;
     }
-    
+        
     /**
      * 
      * @param type $val
@@ -204,7 +204,7 @@ private $title;
      * Find an artist or tracks by the singer name or a song by title name
      */
     public static function findArtistTrackLike($val) {
-   
+        
       $c = Base::getConnection();
       $query = "select * from artists as a left join tracks as t on a.artist_id=t.artist_id  where t.title LIKE '".$val."%' OR a.name LIKE '".$val."%' UNION select * from artists as a right join tracks as t on a.artist_id=t.artist_id  where t.title LIKE '".$val."%' OR a.name LIKE '".$val."%'";
       $stmt = $c->prepare($query) ;
@@ -228,11 +228,11 @@ private $title;
         array_push($res,$obj);
       }
       return $res;
-      
+          
     }
-    
+        
         // properties
-
+            
     // function called when encoded with json_encode
     public function jsonSerialize()
     {

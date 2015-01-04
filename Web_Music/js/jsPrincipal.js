@@ -10,14 +10,8 @@ and open the template in the editor.
 
 /*Start*/
 $(document).ready(function(){
-   
-    if(location.hash){
-        updateMyApp(getLocationHash());
-    }else{
-        location='#!';
-    }
- 
-   // Lorsque je soumets le formulaire
+
+   // Form signUp
     $('#formSU').on('submit', function(e) {
         e.preventDefault(); // J'empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
  
@@ -42,28 +36,67 @@ $(document).ready(function(){
                 dataType : 'text',
                 error: function() { 
              $("#center").empty();
-                 $("#center").append('<p>Ce nom d\'utilisateur ou cet adresse email a dèja été utilisé </p>');  
+                 $("#center").append('<p>Une erreur est survenue ! Veuillez réessayer.</p>');  
         },
                 success: function(html) { // Je récupère la réponse du fichier PHP
             if(html=="error"){
                  $("#center").empty();
-                   $("#center").append('<p>Ce nom d\'utilisateur ou cet adresse email a dèja été utilisé </p>');  
+                   $("#center").append('<p>Ce nom d\'utilisateur ou cet adresse email a déjà été utilisé </p>');  
             }else{
                 $("#center").empty();
-            $("#center").append('<p>Monsieur '+html+' vous etes bien inscrit ! </p>'); 
+            $("#center").append('<p>Cher(e) '+html+', vous êtes bien inscrit ! </p>'); 
             }
                 }
             });
         }
     });
-   
-    window.onhashchange = function() {updateMyApp(getLocationHash());}
-    //setInterval(updateMyApp(getLocationHash(),500));
     
+        // Form signIn
+    $('#loginform').on('submit', function(e) {
+        e.preventDefault();
+        var $this = $(this);
+        var a = $('#a').val();
+        var username = $('#username').val();
+        var password = $('#password').val();
+        if(username === '' || password === '') {
+            alert('Les champs doivent êtres remplis');
+        } else {
+                $.ajax({
+                url: $this.attr('action'),
+                type: $this.attr('method'), 
+                data: $this.serialize(), 
+                dataType : 'text',
+                error: function() { 
+             $("#center").empty();
+                 $("#center").append('<p>Une erreur est survenue ! Veuillez réessayer.</p>');  
+        },
+                success: function(html) {
+            if(html=="error_username"){
+                $("#center").empty();
+                $("#center").append('<p>Ce nom d\'utilisateur n\'existe pas !</p>');  
+            }else{
+                if(html=="error_password"){
+                    $("#center").empty();
+                    $("#center").append('<p>Le mot de passe est incorrect !</p>'); 
+                }
+                else{
+                    $("#center").empty();
+                    $("#center").append('<p>Bienvenue '+html+', vous êtes maintenant connecté !</p>'); 
+                }
+            }
+            }
+            });
+        }
+    });
     
 });
 
-
+/**
+ * 
+ * @param {type} val
+ * @returns {undefined}
+ * Function search an artist or a song of an artist
+ */
 function searchBar(val){
     $.ajax({ 
         type: "GET", 
@@ -92,6 +125,13 @@ function searchBar(val){
     }); 
     }
 
+/**
+ * 
+ * @param {type} val
+ * @returns {undefined}
+ * This function charge the sound in the audio balise and play it. Function is called
+ * when user click on a listen button
+ */
 function listenMusic(val){ 
     var player=document.getElementById('player');
     var sourceMp3=document.getElementById('srcMp3');

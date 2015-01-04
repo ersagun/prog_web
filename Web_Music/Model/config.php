@@ -6,6 +6,11 @@
  * and open the template in the editor.
  */
 
+/**
+ * Description of config.php
+ *
+ * @author ersagun
+ */
 $host= "127.0.0.1";
 $dbname="music";
 $user="root";

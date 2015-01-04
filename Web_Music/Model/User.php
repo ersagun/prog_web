@@ -17,7 +17,7 @@ private $email;
 /**
  * 
  * @return type
- * 
+ * Function show a user
  */
   public function __toString() {
         return "[". __CLASS__ . "] user_id : ". $this->user_id . ":

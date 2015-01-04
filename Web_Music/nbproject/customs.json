@@ -1,7 +1,12 @@
 {
     "elements": {
-        "div": {},
-        "img": {}
+        "img": {
+            "attributes": {
+                "src": {},
+                "alt": {},
+                "title": {}
+            }
+        }
     },
     "attributes": {
         "title_pl\"": {

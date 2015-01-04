@@ -1,3 +1,5 @@
+//@author ersagun
+
 
 html{
     	background: #222222;
@@ -12,10 +14,6 @@ body{
 	color: gray;
 }
 
-
-#txx{
-    font-family: "Ubuntu", Helvetica, Arial, sans-serif!important;
-}
 #all_content{
 	position:relative;
 	width:100%;
@@ -62,7 +60,7 @@ body{
     
     width: 75%;
     height:100%;
-    margin-left: 5%;
+    margin-left: 1%;
 }
 #playlist{
     width:15%;
@@ -76,9 +74,8 @@ position:fixed;
     background-color: white;
 z-index: 1;
 }
-#title_pl{
-    color:black;
-}
+
+
 
 #searchbar{position:relative; width:auto; height:auto; margin-top: 10px;}
 .formulaire               {display:inline-block;}
@@ -87,15 +84,24 @@ z-index: 1;
 
 .thumbnail{
     display:inline-block;
-   
 }
 
-.row{
-    width:auto;
-    overflow: auto;
+#artist{
+    margin-left:6px;
+    float: left;
+    width: 275px;
+    height:350px;
+    vertical-align:top; 
+    display: inline-block;
+    zoom: 1;
 }
-.row::after {
-    content: "";
-    clear: both;
-    display: block;
+
+#music{
+    margin-left:6px;
+    float: left;
+    width: 275px;
+    height:275px;
+    vertical-align:top; 
+    display: inline-block;
+    zoom: 1;
 }
