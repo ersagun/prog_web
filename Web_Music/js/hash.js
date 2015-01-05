@@ -119,11 +119,45 @@ function allArtist(){
                 $("#center").append('<div id="artist" class="thumbnail"><img  data-src="holder.js/300x300" src="'+retour[i].image_url+'" alt="artist" style="height:150px;width:150px;"><div class="caption">\
                         <h3>'+retour[i].name+'</h3>\
                         <p style="width:220px;text-align:justify">'+retour[i].info.substring(0,75)+'</p>\
-                        <p><button class="btn btn-primary" role="button" onclick="seeArtistSongs(\''+retour[i].artist_id+'\')">See</button></p>\
+                        <p><button class="btn btn-primary" role="button" onclick="searchBar(\''+retour[i].name+'\')">See</button></p>\
                         </div>\
                         </div>');
                 
             } 
+            $("#center").append('</div>');
+        }
+    }); 
+}
+
+function seeArtistSongs(val){
+      $("#center").empty();
+    $("#center").append('<h3>'+nameArtist+'</h3>');
+    
+      $.ajax({ 
+        type: "POST", 
+        url: "../Controller/Controller.php", 
+        data: "a=findSongs&artist_id="+val+"",
+        dataType:"json",
+        error: function() { 
+            console.log("erreur !"); 
+        },
+        success: function(retour){
+    
+    
+            $("#center").append('<div class="row" style="text-align:center;"><div class="col-sm-6 col-md-4">');
+            
+            for(i=0;i<retour.length;i++){
+                
+               $("#center").append('<div id="music" class="thumbnail"><img class="imgBlock" data-src="holder.js/300x300" src="'+retour[i].image_url+'" alt="artist" style="height:150px;widht:150px;"><div class="caption">\
+                        <p>'+retour[i].title.substring(0,21)+'</p>\
+                        <p style="width:300px;text-align:justify"></p>\
+                        <p><span onclick="listenMusic(\''+retour[i].mp3_url+'\')" class="btn btn-primary" role="button">listen</span></p>\
+                        </div>\
+                        </div>');
+                
+            } 
+                
+            
             $("#center").append('</div>');
         }
     }); 

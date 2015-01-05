@@ -31,8 +31,8 @@ class Controller {
             'signIn' => 'signIn',
                 'search'=>'search',
                 'allMusic'=>'allMusic',
-                'insertUser'=>'insertUser'
-    
+                'insertUser'=>'insertUser',
+                'findSongs'=>'findSongs'
         );
     }
     
@@ -56,7 +56,7 @@ class Controller {
 
             }else{
 
-                return $this->defaut();
+                return "404 !";
             }
         }else{
 
@@ -71,6 +71,11 @@ class Controller {
         $tab=Artist::findAll(); 
         echo json_encode($tab);
 
+    }
+    
+    public function findSongs(){
+        $tab=Track::findByArtistId($_POST["artist_id"]);
+        echo json_encode($tab);
     }
     
     /**
