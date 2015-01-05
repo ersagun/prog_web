@@ -165,34 +165,6 @@ private $name;
   
     }
     
-    public static function findByArtistId($artist_id){
-        
-      $c = Base::getConnection();
-      $query = "select * from artists as a left join tracks as t on a.artist_id=t.artist_id  where t.artist_id LIKE '".$artist_id."%'  UNION select * from artists as a right join tracks as t on a.artist_id=t.artist_id  where t.artist_id LIKE '".$artist_id."%'";
-      $stmt = $c->prepare($query) ;
-      $stmt->execute();
-      $res = array();
-      while ($ligne = $stmt->fetch(PDO::FETCH_BOTH)) 
-      {
-        $name = $ligne['name'];
-        $image = $ligne['image_url'];
-        $artist_idd = $ligne['artist_id'];
-        $inf = $ligne['info'];
-        $url=$ligne["mp3_url"];
-        $title=$ligne["title"];
-        $obj = new Artist();
-        $obj->name =$name;
-        $obj->image_url=$image;
-        $obj->artist_id=$artist_idd;
-        $obj->info=$inf;
-        $obj->mp3_url=$url;
-        $obj->title=$title;
-        array_push($res,$obj);
-      }
-      return $res;
-          
-    }
-    
     /**
      * 
      * @return array
